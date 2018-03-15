@@ -12,8 +12,6 @@ function displayAnimalInfo() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-
-    console.log(response);
    
     // For loop to create images/ratings for all returned responses 
     for (var i = 0; i < response.data.length; i++) {
@@ -22,17 +20,14 @@ function displayAnimalInfo() {
     var rating = response.data[i].rating;
 
     // Creates an element to have the rating displayed
-    var ratingData = $('<p>').text('Rating: ' + rating);
-
-    // Displays the rating
-    $("#animal-container").prepend(ratingData);
+    var ratingData = $('<p class="ratings">').text('Rating: ' + rating);
 
     // Creates an element to hold the image
     var imageURL = response.data[i].images.fixed_height.url;
-    var gif = $('<img class="column">').attr('src', imageURL);
+    var gif = $('<img class="column animalGif">').attr('src', imageURL);
 
-    // Appends the image
-    $("#animal-container").prepend(gif);
+    // Appends the image and rating data
+    $("#animal-container").prepend(gif, ratingData);
 
   }});
 
