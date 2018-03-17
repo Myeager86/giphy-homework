@@ -5,7 +5,7 @@ var animals = ["Sloth", "Emu", "Skunk", "Lion"];
 function displayAnimalInfo() {
 
   var animal = $(this).attr("data-name");
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q="+ animal +"&api_key=w4JC8PToVpdJEI85R8y8jq8v7qSEmeEz&limit=10";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q="+ animal +"&api_key=w4JC8PToVpdJEI85R8y8jq8v7qSEmeEz&limit=10";
 
   // Creates AJAX call for the specific movie button being clicked
   $.ajax({
@@ -69,6 +69,8 @@ $("#addAnimal").on("click", function(event) {
 
   // The animal from the textbox is then added to our array
   animals.push(newAnimal);
+
+  $("#animal-input").empty();
 
   // Calling renderButtons which handles the processing of our animals array
   renderButtons();
